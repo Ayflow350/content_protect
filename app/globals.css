@@ -2,20 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  user-select: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Hide content during print */
+@media print {
+  .private-content {
+    position: relative;
+    color: transparent; /* Hide the content */
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Show an overlay in print mode */
+  .private-content .overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 50px;
+    z-index: 10;
+  }
+
+  /* Hide buttons or other elements you don't want printed */
+  button,
+  .non-printable {
+    display: none;
+  }
 }
