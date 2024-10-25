@@ -151,7 +151,7 @@ const Article = () => {
           </p>
         </div>
         <div>
-          <button className="bg-blue-400 rounded-lg px-4 py-2 z-10 text-white mb-5">
+          <button className="bg-blue-400 rounded-lg px-4 py-2 z-10 text-white mb-10">
             subscribe to read more
           </button>
         </div>
