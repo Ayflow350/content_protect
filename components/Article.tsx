@@ -123,27 +123,37 @@ const Article = () => {
         <div className="relative left-1/2 -ml-[30vw] right-1/2 -mr-[50vw] max-w-none">
           <Image src={comments} alt="" className="w-[70vw]" />
         </div>
-        <div>
-          <div>
-            <p className="leading-[60px] text-xl text-[#3C3C3C]">
-              That’s rough
-              <br />
-              But
-              <br />
-              <span className="italic">
-                I also asked builders on X, and they had different opinions
-              </span>
-              <br /> This sudden move left many wondering:
-              <br />
-              What in the actual f*** were they thinking?
-            </p>
+        <div className="relative ">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white opacity-100 transition-opacity duration-300"></div>
 
-            <div>
-              <button className="bg-blue-400 rounded-lg px-4 py-2 text-white">
-                subscribe to read more
-              </button>
-            </div>
-          </div>
+          <p className="leading-[60px] text-xl text-[#3C3C3C]">
+            {/* This line will be fully visible */}
+            <span className="opacity-30 transition-opacity duration-300">
+              That’s rough
+            </span>
+            <br />
+            {/* Other lines will be completely hidden */}
+            <span className="opacity-100 transition-opacity duration-300">
+              But
+            </span>
+            <br />
+            <span className="opacity-100 transition-opacity duration-300 italic">
+              I also asked builders on X, and they had different opinions
+            </span>
+            <br />
+            <span className="opacity-0 transition-opacity duration-300">
+              This sudden move left many wondering:
+            </span>
+            <br />
+            <span className="opacity-0 transition-opacity duration-300">
+              What in the actual f*** were they thinking?
+            </span>
+          </p>
+        </div>
+        <div>
+          <button className="bg-blue-400 rounded-lg px-4 py-2 z-10 text-white mb-5">
+            subscribe to read more
+          </button>
         </div>
       </div>
     </div>
