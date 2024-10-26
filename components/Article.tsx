@@ -48,7 +48,7 @@ const Article = () => {
     };
   }, []);
   return (
-    <div className="container mx-auto max-w-[650px]  text-center justify-center pt-10 ">
+    <div className="container private-content mx-auto max-w-[650px]  text-center justify-center pt-10 ">
       <div className="text-left">
         <div className="mb-4">
           <h1 className="font-light  text-gray-500 text-base">
@@ -57,17 +57,17 @@ const Article = () => {
           <h1 className="pt-5 font-extrabold text-5xl">
             The Real Reason OpenAI Abandoned Next.js for Remix
           </h1>
-          <h1 className="pt-3  text-gray-500 text-xl">
+          <h1 className="pt-3 private-content text-gray-500 text-xl">
             The surprising reasons behind OpenAI’s move and what it means for
             the future of web development
           </h1>
         </div>
 
-        <div className="flex flex-row gap-x-3 items-center mb-10">
+        <div className="flex  private-content flex-row gap-x-3 items-center mb-10">
           <Image
             src={tourist}
             alt=""
-            className="w-10 h-10 rounded-full object-cover"
+            className="w-10 h-10 rounded-full object-cover private-content"
           />
           <div className="flex flex-col gap-y-1 ">
             <div className="flex flex-row gap-x-1">
@@ -83,8 +83,8 @@ const Article = () => {
           </div>
         </div>
 
-        <div>
-          <Image src={blog} alt="" />
+        <div className="private-content">
+          <Image src={blog} alt="" className="private-content" />
         </div>
 
         <div>
