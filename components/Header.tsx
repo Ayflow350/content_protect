@@ -22,7 +22,7 @@ const Header = () => {
             className="outline-none border-2 border-[#fff] placeholder:text-[#959595] bg-[#F9F9F9] p-2 pl-10 pr-4 rounded-full w-[300px]"
           />
         </div>
-        <div className="flex flex-row gap-x-5 items-center">
+        <div className=" hidden md:flex flex-row gap-x-5 items-center">
           <div className="flex flex-row gap-x-3 items-center">
             <div className="flex flex-row gap-x-1 items-center">
               <div className="text-2xl font-light text-gray-500 hover:text-black">

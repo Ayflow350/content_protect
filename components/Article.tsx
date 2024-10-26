@@ -7,56 +7,46 @@ import comments from "@/images/comments.webp";
 
 const Article = () => {
   useEffect(() => {
-    const disableCopy = (e: ClipboardEvent) => {
-      e.preventDefault();
-    };
-
+    const disableCopy = (e: ClipboardEvent) => e.preventDefault();
     const disableKeyboardShortcuts = (e: KeyboardEvent) => {
-      // Disable common shortcuts for copying, saving, printing, and opening dev tools
       if (
-        ((e.ctrlKey || e.metaKey) &&
-          (e.key === "c" || e.key === "p" || e.key === "s")) ||
-        ((e.ctrlKey || e.metaKey) &&
-          e.shiftKey &&
-          (e.key === "I" || e.key === "J")) || // Dev Tools (Ctrl+Shift+I, Ctrl+Shift+J)
-        e.key === "F12" // F12
+        ((e.ctrlKey || e.metaKey) && ["c", "p", "s"].includes(e.key)) ||
+        e.ctrlKey ||
+        (e.metaKey && e.shiftKey && ["I", "J"].includes(e.key)) ||
+        e.key === "F12"
       ) {
         e.preventDefault();
-        alert("subscribe this is membership only");
+        alert("Subscribe - this is membership only");
       }
     };
-
     const disableRightClick = (e: MouseEvent) => {
-      // Prevent the default context menu from showing
       e.preventDefault();
-      alert("subscribe this is membership only");
+      alert("Subscribe - this is membership only");
     };
-
-    // Detect when DevTools is open and try to close it (hacky, not 100% effective)
     const detectDevTools = () => {
-      const threshold = 160;
-      const devtools =
-        window.outerWidth - window.innerWidth > threshold ||
-        window.outerHeight - window.innerHeight > threshold;
-      if (devtools) {
+      if (
+        window.outerWidth - window.innerWidth > 160 ||
+        window.outerHeight - window.innerHeight > 160
+      ) {
         alert("Developer Tools is not allowed!");
-        window.close(); // Attempt to close the window if DevTools is detected
       }
     };
 
-    document.addEventListener("copy", disableCopy);
-    document.addEventListener("keydown", disableKeyboardShortcuts);
-    document.addEventListener("contextmenu", disableRightClick); // Disable right-click
-    window.addEventListener("resize", detectDevTools); // Check if DevTools is opened by resizing
+    if (window.innerWidth >= 768) {
+      // Only run on larger screens
+      document.addEventListener("copy", disableCopy);
+      document.addEventListener("keydown", disableKeyboardShortcuts);
+      document.addEventListener("contextmenu", disableRightClick);
+      window.addEventListener("resize", detectDevTools);
+    }
 
     return () => {
       document.removeEventListener("copy", disableCopy);
       document.removeEventListener("keydown", disableKeyboardShortcuts);
-      document.removeEventListener("contextmenu", disableRightClick); // Clean up the right-click listener
+      document.removeEventListener("contextmenu", disableRightClick);
       window.removeEventListener("resize", detectDevTools);
     };
   }, []);
-
   return (
     <div className="container mx-auto max-w-[650px]  text-center justify-center pt-10 ">
       <div className="text-left">
