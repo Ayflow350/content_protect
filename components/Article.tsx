@@ -32,6 +32,9 @@ const Article = () => {
         alert("Developer Tools is not allowed!");
       }
     };
+    const disableLongPress = (e: TouchEvent) => {
+      e.preventDefault();
+    };
 
     // Set isMobile based on screen size
     setIsMobile(window.innerWidth < 768);
@@ -41,6 +44,8 @@ const Article = () => {
       document.addEventListener("keydown", disableKeyboardShortcuts);
       document.addEventListener("contextmenu", disableRightClick);
       window.addEventListener("resize", detectDevTools);
+      document.addEventListener("touchstart", disableLongPress);
+      document.addEventListener("touchend", disableLongPress);
     }
 
     return () => {
@@ -48,6 +53,8 @@ const Article = () => {
       document.removeEventListener("keydown", disableKeyboardShortcuts);
       document.removeEventListener("contextmenu", disableRightClick);
       window.removeEventListener("resize", detectDevTools);
+      document.removeEventListener("touchstart", disableLongPress);
+      document.removeEventListener("touchend", disableLongPress);
     };
   }, [isMobile]);
   return (
