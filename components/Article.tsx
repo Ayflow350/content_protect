@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import tourist from "@/images/tourist.jpg";
 import blog from "@/images/Nextai.webp";
 import comments from "@/images/comments.webp";
 
 const Article = () => {
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const disableCopy = (e: ClipboardEvent) => e.preventDefault();
     const disableKeyboardShortcuts = (e: KeyboardEvent) => {
@@ -32,8 +33,10 @@ const Article = () => {
       }
     };
 
-    if (window.innerWidth >= 768) {
-      // Only run on larger screens
+    // Set isMobile based on screen size
+    setIsMobile(window.innerWidth < 768);
+
+    if (!isMobile) {
       document.addEventListener("copy", disableCopy);
       document.addEventListener("keydown", disableKeyboardShortcuts);
       document.addEventListener("contextmenu", disableRightClick);
@@ -46,7 +49,7 @@ const Article = () => {
       document.removeEventListener("contextmenu", disableRightClick);
       window.removeEventListener("resize", detectDevTools);
     };
-  }, []);
+  }, [isMobile]);
   return (
     <div className="container private-content mx-auto max-w-[650px]  text-center justify-center pt-10 ">
       <div className="text-left">
